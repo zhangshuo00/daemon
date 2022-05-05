@@ -54,7 +54,7 @@ console.log(sum);
 
 在内存创建阶段，JavaScript 会扫描所有的代码，为代码中的所有变量和函数分配内存。对于变量，JavaScript 会在内存创建阶段存储 `undefined`，对于函数，它会保留整个函数代码，我们将在下面的例子中看到。
 
-![2](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/4ty49vslo873hpehxdrw.gif)
+![2](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/4ty49vslo873hpehxdrw.gif)
 
 现在在第二阶段，即代码执行阶段，开始逐行扫描整个代码。当它遇到`var a = 2`时，它将 **2** 分配给内存中的 `a`。直到现在，`a` 的值是 **undefined**。
 
@@ -84,7 +84,7 @@ var square4 = square(4);
 
 对于函数，它将把整个函数存储在内存中。
 
-![3](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/68nk5l6806bax94k0tky.gif)
+![3](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/68nk5l6806bax94k0tky.gif)
 
 当 JavaScript 运行函数时，它将在全局执行上下文中创建一个执行上下文。
 
@@ -92,21 +92,21 @@ var square4 = square(4);
 
 `square2` 变量将调用 `square` 函数，而 JavaScript 将创建一个新的执行上下文。
 
-![4](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/zvfyis150o3i7bn1x6hy.gif)
+![4](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/zvfyis150o3i7bn1x6hy.gif)
 
 `square` 函数的新的执行上下文将在内存创建阶段为该函数中存在的所有变量分配内存。
 
-![5](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/e67rsojvcqmowwj3w75b.gif)
+![5](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/e67rsojvcqmowwj3w75b.gif)
 
 在给函数内的所有变量分配内存后，它将逐行执行代码。然后得到 `num` 的值，即第一个值为 **2** 的变量，之后计算出 `ans`。`ans` 计算完毕后，返回需要分配给 `square2` 的值。
 
 一旦这个函数返回了值，这个函数的执行上下文将被销毁，因为已经完成了它的工作。
 
-![6](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/b2zu35q2as6uy57qve9q.gif)
+![6](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/b2zu35q2as6uy57qve9q.gif)
 
 现在它将对第7行的square4变量进行类似的程序，如下所示。
 
-![7](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/q7wlgf8uj91cpglpvh0z.gif)
+![7](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/q7wlgf8uj91cpglpvh0z.gif)
 
 一旦所有代码执行完毕，全局执行上下文也将被销毁，这就是 JavaScript 在幕后执行代码的方式。
 
@@ -114,7 +114,7 @@ var square4 = square(4);
 
 当在 JavaScript 中调用一个函数时，JavaScript 会创建一个执行上下文。当在函数内部再嵌套函数时，执行上下文将变得很复杂。
 
-![8](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/idywyfc19t2vsf1nyww1.png)
+![8](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/idywyfc19t2vsf1nyww1.png)
 
 JavaScript 在调用栈的帮助下管理代码执行上下文的创建和删除。
 
@@ -134,7 +134,7 @@ a();
 
 我们创建了一个函数 `a`，它调用另一个函数 `insideA`，返回 **true**。我知道这段代码很蠢，什么都没做，但它会帮助我们理解 JavaScript 如何处理回调函数。
 
-![9](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/03bry7soja8z3ad143ry.gif)
+![9](https://bright-galaxy.oss-cn-hangzhou.aliyuncs.com/images/img/03bry7soja8z3ad143ry.gif)
 
 JavaScript 将创建一个全局的执行上下文，全局执行上下文将为函数 `a` 分配内存，并在代码执行阶段调用 `function a`。
 
