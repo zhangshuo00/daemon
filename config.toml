@@ -15,10 +15,16 @@ ignoreErrors = ["error-remote-getjson"]
 theme = "hugo-paper"
 title = "Daemon"
 
+# PygmentsCodeFences = true
+# PygmentsUseClasses = true
+# PygmentsCodefencesGuessSyntax = true
+# PygmentsOptions = "linenos=table"
+
 [params]
   # twitter = 'nanxiaobei'
   github = 'zhangshuo00'
   # instagram = 'nan.xiaobei'
+  # disableHLJS = true
 # ------------------------------
 
 # needed to  render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
