@@ -8,6 +8,6 @@ author = "zs"
 
 Thanks for watching my blog. 
 
-You can contact me via [email](easonzhang5002@gmail.com).
+You can contact me via [easonzhang5002@gmail.com](easonzhang5002@gmail.com).
 
 Learn more on [GitHub](https://github.com/zhangshuo00).
