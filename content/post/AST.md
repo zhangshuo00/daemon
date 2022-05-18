@@ -98,7 +98,7 @@ npm install
 
 通过对语法树进行递归的算法被存储为一个对象，每个树节点类型的属性包含一个函数，该函数可以递归这些节点。这有几种方法可以运行这个遍历器。
 
-**simple(node, visitors, base, state)** 在一棵树上做“简单”的遍历。
+**simple`(node, visitors, base, state)`** 在一棵树上做“简单”的遍历。
 
 `node` 参数需要是 AST 格式。
 
@@ -126,3 +126,41 @@ walker.simple(parse, {
   }
 });
 ```
+
+**ancestor`(node, visitors, base, state)`** 在一棵树上做“简单”的遍历。建立一个祖先节点的数组（包括当前节点），并将该数组作为第三个参数作为回调传递。
+
+```js
+const acorn = require("acorn")
+const walk = require("acorn-walk")
+
+walk.ancestor(acorn.parse("foo('hi')"), {
+  Literal(_, ancestors) {
+    console.log("This literal's ancestors are:", ancestors.map(n => n.type));
+    // ["Program", "ExpressionStatement", "CallExpression", "Literal"]
+  }
+})
+```
+
+**recursive`(node, state, functions, state)`** 执行一个“递归”的遍历，其中 walker 函数负责在其目标节点的子节点上继续遍历。`state` 是一个起始状态，`functions` 需要包含一个将节点类型映射到 walker 函数的对象，这个函数是用 `(node, state, c)`作为参数调用的，并且可以通过用 `(node, state)` 参数调用 `c` 参数从而在一个子节点上继续遍历。可选的 `base` 参数为那些没有在函数对象中处理的节点类型提供备用的遍历函数。如果没有给出，将使用默认的遍历器。
+
+**make`(functions, base)`** 通过使用遍历器中的 `functions`建立一个新的遍历器对象，并通过从`base`中获取默认值来填补缺失的函数。
+
+**full`(node, callback, base, state)`** 在一棵树上进行完全的遍历，用每个节点的参数`(node, state, type)`调用回调。
+
+**fullAncestor`(node, callback, base, state)`** 在一棵树上进行完全的遍历，建立一个祖先节点的数组（包括当前节点），并将该数组作为第三个参数传递给回调。
+```js
+const acorn = require("acorn");
+const walker = require("acorn-walk");
+
+walker.full(acorn.parse("1 + 1"), node => {
+  console.log(`There's a ${node.type} node at ${node.ch}`)
+})
+```
+
+**findNodeAt`(node, start, end, test, base, state)`** 尝试在树中从给定的起点到终点处找到一个满足`test`的节点。`start` 和 `end` 可以是 `null` （作为通配符）或数字。 `test` 可以是一个字符串（表示一个节点类型）或一个函数，它接收`(nodeType, node)`参数并返回一个布尔值，表示这个节点是否存在。`base` 和 `state`是可选的，用来指定一个自定义遍历器。节点从内到外进行测试，所以如果有两个节点与边界相匹配，将优先选择内侧的节点。
+
+**findNodeAround`(node, pos, test, base, state)`** 与`findNodeAt`很相似，但会匹配任何存在于指定位置周围的节点。
+
+**findNodeAfter`(node, pos, test, base, state)`** 与`findNodeAround`类似，但会匹配给定位置之后的所有节点（在内部节点之前测试外部节点）。
+
+>翻译完了，但不懂的地方还是太多，所以得写一个小插件实践一下🤔
