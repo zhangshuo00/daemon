@@ -3,7 +3,6 @@ baseURL = "https://daemon.acrosstheuniverse.top/"
 author = "Steve Francia"
 copyright = "Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved."
 paginate = 10
-summaryLength = 50
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
@@ -15,16 +14,15 @@ ignoreErrors = ["error-remote-getjson"]
 theme = "hugo-paper"
 title = "Daemon"
 
-# PygmentsCodeFences = true
-# PygmentsUseClasses = true
-# PygmentsCodefencesGuessSyntax = true
-# PygmentsOptions = "linenos=table"
-
 [params]
-  # twitter = 'nanxiaobei'
-  github = 'zhangshuo00'
-  # instagram = 'nan.xiaobei'
-  # disableHLJS = true
+  #twitter = 'nanxiaobei'
+  github = 'zhangshuo'
+  #instagram = 'nan.xiaobei'
+
+  avatar = 'easonzhang5002@gmail.com'
+  name = 'zhangshuo'
+  # bio = 'Discover fresh context'
+
 # ------------------------------
 
 # needed to  render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
@@ -39,6 +37,11 @@ title = "Daemon"
     identifier = "about"
     name = "About"
     url = "/about/"
+    weight = 10
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
     weight = 10
 
 [taxonomies]
